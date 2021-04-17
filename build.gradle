@@ -19,6 +19,9 @@ dependencies {
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
+    //Tests
+    implementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+
     // Code formatting
     ktlint "com.pinterest:ktlint:0.41.0"
 
@@ -48,4 +51,8 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
     classpath = configurations.ktlint
     main = "com.pinterest.ktlint.Main"
     args "-F", "src/**/*.kt"
+}
+
+test {
+    useJUnitPlatform()
 }
