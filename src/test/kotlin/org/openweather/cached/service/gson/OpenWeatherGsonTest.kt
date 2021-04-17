@@ -1,11 +1,10 @@
 package org.openweather.cached.service.gson
 
-import com.google.gson.JsonObject
 import com.google.gson.JsonParser
-import java.time.Month
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.openweather.cached.service.model.DayAndNight
+import java.time.Month
 import java.time.ZonedDateTime
 
 class OpenWeatherGsonTest {
@@ -55,7 +54,7 @@ class OpenWeatherGsonTest {
         val backToJson = gson.toJson(result)
         val jsonObject = JsonParser.parseString(backToJson).asJsonObject
 
-        assertEquals(634197600L,jsonObject.get("sunrise").asBigInteger.toLong())
-        assertEquals(634226400L,jsonObject.get("sunset").asBigInteger.toLong())
+        assertEquals(634197600L, jsonObject.get("sunrise").asBigInteger.toLong())
+        assertEquals(634226400L, jsonObject.get("sunset").asBigInteger.toLong())
     }
 }
