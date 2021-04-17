@@ -1,5 +1,7 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.4.32'
+    id "jacoco"
+    id "org.sonarqube" version "2.8"
 }
 
 group 'org.openweather.cached.service'
@@ -53,6 +55,32 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
     args "-F", "src/**/*.kt"
 }
 
+// --- TEST CONFIGURATION ---
+
+// Using JUnit5
 test {
     useJUnitPlatform()
+}
+
+// Using Jacoco to create test coverage reports
+jacocoTestReport {
+    reports {
+        xml.enabled true
+    }
+}
+
+// Test coverage is always created after running the tests
+plugins.withType(JacocoPlugin) {
+    tasks["test"].finalizedBy 'jacocoTestReport'
+}
+
+// --- CODE ANALYSIS CONFIGURATION ---
+sonarqube {
+    properties {
+        property 'sonar.host.url', 'https://sonarcloud.io'
+        property 'sonar.organization', 'zsoltberki'
+        property 'sonar.projectKey', 'ZsoltBerki_OpenWeatherKotlin'
+        property 'sonar.sources', 'src/main/kotlin/'
+        property 'sonar.test', 'src/test/kotlin/n'
+    }
 }

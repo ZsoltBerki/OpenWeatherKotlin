@@ -32,4 +32,4 @@ jobs:
           distribution: 'adopt'
 
       - name: Build the code, check formatting, run tests
-        run: ./gradlew clean build
+        run: ./gradlew clean build sonarqube
