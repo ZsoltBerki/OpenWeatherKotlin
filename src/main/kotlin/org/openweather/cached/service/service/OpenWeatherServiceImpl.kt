@@ -8,10 +8,13 @@ import org.openweather.cached.service.model.Units
 import org.openweather.cached.service.model.interfaces.Location
 import org.openweather.cached.service.model.response.OneCallResponse
 
-class OpenWeatherServiceImpl(private val connector: OpenWeatherConnector, private val defaultUnits: Units) : OpenWeatherService {
+class OpenWeatherServiceImpl(
+    private val connector: OpenWeatherConnector,
+    private val defaultUnits: Units
+) : OpenWeatherService {
     override suspend fun getOneCall(
         location: Location,
-        exclude: Array<OneCallParts>,
+        exclude: List<OneCallParts>,
         units: Units?,
         language: Language
     ): OneCallResponse {

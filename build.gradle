@@ -17,22 +17,34 @@ configurations {
     ktlint
 }
 
+ext {
+    ktor_version = '1.5.3'
+}
+
 dependencies {
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
-
-    //Tests
-    implementation 'org.junit.jupiter:junit-jupiter:5.7.0'
 
     // Code formatting
     ktlint "com.pinterest:ktlint:0.41.0"
 
     // Ktor REST client
-    implementation "io.ktor:ktor-client-core:1.5.3"
-    implementation "io.ktor:ktor-client-cio:1.5.3"
+    implementation "io.ktor:ktor-client-core:$ktor_version"
+    implementation "io.ktor:ktor-client-cio:$ktor_version"
 
     // JSON
     implementation 'com.google.code.gson:gson:2.8.6'
+
+    //Tests
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.7.0'
+    testImplementation "io.ktor:ktor-client-mock:$ktor_version"
+}
+
+// config JVM target to 1.8 for kotlin compilation tasks
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 task ktlint(type: JavaExec, group: "verification") {

@@ -12,7 +12,7 @@ interface OpenWeatherService {
      */
     suspend fun getOneCall(
         location: Location,
-        exclude: Array<OneCallParts> = emptyArray(),
+        exclude: List<OneCallParts> = emptyList(),
         units: Units? = null,
         language: Language = Language.ENGLISH
     ): OneCallResponse

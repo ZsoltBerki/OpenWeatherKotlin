@@ -12,7 +12,7 @@ interface OpenWeatherConnector {
     suspend fun getOneCall(
         location: Location,
         units: Units = Units.METRIC,
-        exclude: Array<OneCallParts> = emptyArray(),
+        exclude: List<OneCallParts> = emptyList(),
         language: Language = Language.ENGLISH
     ): String
 }
