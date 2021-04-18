@@ -73,3 +73,13 @@ jacocoTestReport {
 plugins.withType(JacocoPlugin) {
     tasks["test"].finalizedBy 'jacocoTestReport'
 }
+
+// --- CODE ANALYSIS CONFIGURATION ---
+sonarqube {
+    properties {
+        property 'sonar.host.url', 'https://sonarcloud.io'
+        property 'sonar.organization', 'zsoltberki'
+        property 'sonar.projectKey', 'ZsoltBerki_OpenWeatherKotlin'
+        property 'sonar.sources', 'src/main/kotlin/'
+    }
+}
