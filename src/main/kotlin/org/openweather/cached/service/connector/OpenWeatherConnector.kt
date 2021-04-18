@@ -1,8 +1,8 @@
-package org.openweather.cached.service.rest
+package org.openweather.cached.service.connector
 
-import org.openweather.cached.service.model.Location
 import org.openweather.cached.service.model.OneCallParts
 import org.openweather.cached.service.model.Units
+import org.openweather.cached.service.model.interfaces.Location
 
 interface OpenWeatherConnector {
     /**

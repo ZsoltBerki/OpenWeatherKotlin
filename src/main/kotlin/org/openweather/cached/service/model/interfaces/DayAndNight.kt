@@ -1,4 +1,4 @@
-package org.openweather.cached.service.model
+package org.openweather.cached.service.model.interfaces
 
 import java.time.ZonedDateTime
 

@@ -3,12 +3,11 @@ package org.openweather.cached.service.model
 import com.google.gson.annotations.SerializedName
 import org.openweather.cached.service.model.interfaces.DateTime
 import org.openweather.cached.service.model.interfaces.DayAndNight
-import org.openweather.cached.service.model.interfaces.Temperature
 import org.openweather.cached.service.model.interfaces.WeatherConditions
 import org.openweather.cached.service.model.interfaces.Wind
 import java.time.ZonedDateTime
 
-data class CurrentWeather(
+data class DailyWeather(
     @SerializedName("dt")
     override val dateTime: ZonedDateTime,
 
@@ -19,10 +18,21 @@ data class CurrentWeather(
     override val sunset: ZonedDateTime,
 
     @SerializedName("temp")
-    override val temperature: Float,
+    /**
+     * Temperatures for the day.
+     *
+     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     */
+    val dailyTemperature: DailyTemperature,
 
     @SerializedName("feels_like")
-    override val feelsLike: Float,
+    /**
+     * Temperatures for the day.
+     * This accounts for the human perception of weather.
+     *
+     * Units – default: kelvin, metric: Celsius, imperial: Fahrenheit.
+     */
+    val dailyFeelsLike: DailyFeelsLike,
 
     @SerializedName("pressure")
     override val pressure: Int,
@@ -51,12 +61,26 @@ data class CurrentWeather(
     @SerializedName("wind_deg")
     override val windDegree: Float,
 
+    @SerializedName("pop")
+    /**
+     * Probability of precipitation
+     *
+     * from 0 (none) to 1 (certain)
+     */
+    val precipitationProbability: Float,
+
     @SerializedName("snow")
-    val snowVolume: Snow?,
+    /**
+     * Precipitation volume, mm
+     */
+    val snowVolume: Float,
 
     @SerializedName("rain")
-    val rainVolume: Rain?,
+    /**
+     * Snow volume, mm
+     */
+    val rainVolume: Float,
 
     @SerializedName("weather")
     val weatherMetadata: List<WeatherMetadata>
-) : DayAndNight, Temperature, WeatherConditions, Wind, DateTime
+) : DayAndNight, WeatherConditions, Wind, DateTime

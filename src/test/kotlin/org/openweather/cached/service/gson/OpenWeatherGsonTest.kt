@@ -3,7 +3,7 @@ package org.openweather.cached.service.gson
 import com.google.gson.JsonParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
-import org.openweather.cached.service.model.DayAndNight
+import org.openweather.cached.service.model.interfaces.DayAndNight
 import java.time.Month
 import java.time.ZonedDateTime
 

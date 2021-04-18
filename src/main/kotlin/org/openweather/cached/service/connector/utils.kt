@@ -1,6 +1,6 @@
-package org.openweather.cached.service.rest
+package org.openweather.cached.service.connector
 
-import org.openweather.cached.service.model.Location
+import org.openweather.cached.service.model.interfaces.Location
 
 fun validateLocation(location: Location) {
     validateLongitude(location.longitude)

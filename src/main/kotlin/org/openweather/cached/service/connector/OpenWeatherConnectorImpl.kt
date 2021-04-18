@@ -1,13 +1,13 @@
-package org.openweather.cached.service.rest
+package org.openweather.cached.service.connector
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import org.openweather.cached.service.configurations.OpenWeatherConfigurations
-import org.openweather.cached.service.model.Location
 import org.openweather.cached.service.model.OneCallParts
 import org.openweather.cached.service.model.Units
+import org.openweather.cached.service.model.interfaces.Location
 
 class OpenWeatherConnectorImpl(private val config: OpenWeatherConfigurations) : OpenWeatherConnector {
     companion object {

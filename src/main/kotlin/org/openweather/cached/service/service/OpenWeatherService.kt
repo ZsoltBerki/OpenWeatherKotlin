@@ -1,9 +1,9 @@
 package org.openweather.cached.service.service
 
-import org.openweather.cached.service.model.Location
 import org.openweather.cached.service.model.OneCallParts
 import org.openweather.cached.service.model.OneCallResponse
 import org.openweather.cached.service.model.Units
+import org.openweather.cached.service.model.interfaces.Location
 
 interface OpenWeatherService {
     /**
