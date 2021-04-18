@@ -33,5 +33,7 @@ jobs:
 
       - name: Build the code, check formatting, run tests
         run: ./gradlew clean build
-      - name: Build the code, check formatting, run tests
-        run: ./gradlew sonarqube -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      - name: Code analysis
+        run: ./gradlew sonarqube -Dsonar.login=$SONAR_TOKEN
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
