@@ -5,6 +5,7 @@ import io.ktor.client.engine.cio.CIO
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
 import org.openweather.cached.service.configurations.OpenWeatherConfigurations
+import org.openweather.cached.service.model.Language
 import org.openweather.cached.service.model.OneCallParts
 import org.openweather.cached.service.model.Units
 import org.openweather.cached.service.model.interfaces.Location
@@ -16,9 +17,9 @@ class OpenWeatherConnectorImpl(private val config: OpenWeatherConfigurations) : 
         private const val PARAMETER_API_KEY = "appid"
         private const val PARAMETER_UNITS = "units"
         private const val PARAMETER_EXCLUDE = "exclude"
+        private const val PARAMETER_LANGUAGE = "lang"
     }
 
-    // TODO make it so that we don't create new client unless needed
     private fun getClient(): HttpClient {
         return HttpClient(CIO)
     }
@@ -26,7 +27,8 @@ class OpenWeatherConnectorImpl(private val config: OpenWeatherConfigurations) : 
     override suspend fun getOneCall(
         location: Location,
         units: Units,
-        exclude: Array<OneCallParts>
+        exclude: Array<OneCallParts>,
+        language: Language
     ): String {
         validateLocation(location)
 
@@ -43,6 +45,7 @@ class OpenWeatherConnectorImpl(private val config: OpenWeatherConfigurations) : 
                 parameter(PARAMETER_LONGITUDE, location.longitude)
                 parameter(PARAMETER_API_KEY, config.apiKey)
                 parameter(PARAMETER_UNITS, units)
+                parameter(PARAMETER_LANGUAGE, language.id)
                 if (excludedParts != null) {
                     parameter(PARAMETER_EXCLUDE, excludedParts)
                 }

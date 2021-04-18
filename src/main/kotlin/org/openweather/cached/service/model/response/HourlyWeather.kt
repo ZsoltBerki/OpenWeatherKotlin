@@ -1,22 +1,15 @@
-package org.openweather.cached.service.model
+package org.openweather.cached.service.model.response
 
 import com.google.gson.annotations.SerializedName
 import org.openweather.cached.service.model.interfaces.DateTime
-import org.openweather.cached.service.model.interfaces.DayAndNight
 import org.openweather.cached.service.model.interfaces.Temperature
 import org.openweather.cached.service.model.interfaces.WeatherConditions
 import org.openweather.cached.service.model.interfaces.Wind
 import java.time.ZonedDateTime
 
-data class CurrentWeather(
+data class HourlyWeather(
     @SerializedName("dt")
     override val dateTime: ZonedDateTime,
-
-    @SerializedName("sunrise")
-    override val sunrise: ZonedDateTime,
-
-    @SerializedName("sunset")
-    override val sunset: ZonedDateTime,
 
     @SerializedName("temp")
     override val temperature: Float,
@@ -51,6 +44,14 @@ data class CurrentWeather(
     @SerializedName("wind_deg")
     override val windDegree: Float,
 
+    @SerializedName("pop")
+    /**
+     * Probability of precipitation
+     *
+     * from 0 (none) to 1 (certain)
+     */
+    val precipitationProbability: Float,
+
     @SerializedName("snow")
     val snowVolume: Snow?,
 
@@ -59,4 +60,4 @@ data class CurrentWeather(
 
     @SerializedName("weather")
     val weatherMetadata: List<WeatherMetadata>
-) : DayAndNight, Temperature, WeatherConditions, Wind, DateTime
+) : Temperature, WeatherConditions, Wind, DateTime
