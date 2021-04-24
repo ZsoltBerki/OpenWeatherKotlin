@@ -33,7 +33,10 @@ data class HourlyWeather(
     override val uvi: Float,
 
     @SerializedName("visibility")
-    override val visibility: Int,
+    /**
+     * Average visibility, metres
+     */
+    val visibility: Int,
 
     @SerializedName("wind_speed")
     override val windSpeed: Float,

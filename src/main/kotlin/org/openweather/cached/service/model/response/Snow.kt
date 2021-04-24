@@ -5,5 +5,5 @@ import org.openweather.cached.service.model.interfaces.PrecipitationLastHour
 
 data class Snow(
     @SerializedName("1h")
-    override val lastHour: Int?
+    override val lastHour: Float?
 ) : PrecipitationLastHour

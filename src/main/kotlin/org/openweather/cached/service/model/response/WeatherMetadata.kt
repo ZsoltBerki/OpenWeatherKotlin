@@ -25,5 +25,5 @@ data class WeatherMetadata(
      * Weather icon id.
      */
     @SerializedName("icon")
-    val icons: String
+    val icon: String
 )

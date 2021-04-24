@@ -4,5 +4,5 @@ interface Precipitation {
     /**
      * Precipitation volume, mm
      */
-    val precipitation: Int
+    val precipitation: Float
 }

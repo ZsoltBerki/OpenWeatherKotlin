@@ -4,5 +4,5 @@ interface PrecipitationLastHour {
     /**
      * Precipitation volume for last hour, mm
      */
-    val lastHour: Int?
+    val lastHour: Float?
 }

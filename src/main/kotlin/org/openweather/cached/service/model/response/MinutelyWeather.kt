@@ -10,5 +10,5 @@ data class MinutelyWeather(
     override val dateTime: ZonedDateTime,
 
     @SerializedName("precipitation")
-    override val precipitation: Int,
+    override val precipitation: Float,
 ) : DateTime, Precipitation

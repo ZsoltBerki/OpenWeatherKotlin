@@ -26,9 +26,4 @@ interface WeatherConditions {
      * Current UV index
      */
     val uvi: Float
-
-    /**
-     * Average visibility, metres
-     */
-    val visibility: Int
 }

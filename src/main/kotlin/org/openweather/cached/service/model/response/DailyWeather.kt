@@ -3,6 +3,7 @@ package org.openweather.cached.service.model.response
 import com.google.gson.annotations.SerializedName
 import org.openweather.cached.service.model.interfaces.DateTime
 import org.openweather.cached.service.model.interfaces.DayAndNight
+import org.openweather.cached.service.model.interfaces.Moon
 import org.openweather.cached.service.model.interfaces.WeatherConditions
 import org.openweather.cached.service.model.interfaces.Wind
 import java.time.ZonedDateTime
@@ -34,6 +35,15 @@ data class DailyWeather(
      */
     val dailyFeelsLike: DailyFeelsLike,
 
+    @SerializedName("moonrise")
+    override val moonRise: ZonedDateTime,
+
+    @SerializedName("moonset")
+    override val moonSet: ZonedDateTime,
+
+    @SerializedName("moon_phase")
+    override val moonPhase: Float,
+
     @SerializedName("pressure")
     override val pressure: Int,
 
@@ -48,9 +58,6 @@ data class DailyWeather(
 
     @SerializedName("uvi")
     override val uvi: Float,
-
-    @SerializedName("visibility")
-    override val visibility: Int,
 
     @SerializedName("wind_speed")
     override val windSpeed: Float,
@@ -73,14 +80,14 @@ data class DailyWeather(
     /**
      * Precipitation volume, mm
      */
-    val snowVolume: Float,
+    val snowVolume: Float?,
 
     @SerializedName("rain")
     /**
      * Snow volume, mm
      */
-    val rainVolume: Float,
+    val rainVolume: Float?,
 
     @SerializedName("weather")
     val weatherMetadata: List<WeatherMetadata>
-) : DayAndNight, WeatherConditions, Wind, DateTime
+) : DayAndNight, WeatherConditions, Wind, DateTime, Moon
